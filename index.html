@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Escolar de Presença Confiável</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <header class="mb-4 text-center">
+      <h1 class="h2 text-primary fw-bold">Diário de Classe Anti-Fraude</h1>
+      <p class="text-muted">Rastreabilidade total e histórico imutável de presenças.</p>
+    </header>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-dark text-white fw-bold">Cadastrar Nova Sala</div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="inputSala" class="form-label">Nome da Sala</label>
+              <input type="text" id="inputSala" class="form-control" placeholder="Ex: 3º Ano A">
+            </div>
+            <button onclick="UIService.handleCadastrarSala()" class="btn btn-primary w-100">Salvar Sala</button>
+          </div>
+        </div>
+
+        <div class="card shadow-sm">
+          <div class="card-header bg-dark text-white fw-bold">Cadastrar Novo Aluno</div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="inputAluno" class="form-label">Nome Completo</label>
+              <input type="text" id="inputAluno" class="form-control" placeholder="Ex: Lucas Silva">
+            </div>
+            <div class="mb-3">
+              <label for="selectSalaAluno" class="form-label">Selecione a Sala</label>
+              <select id="selectSalaAluno" class="form-select"></select>
+            </div>
+            <button onclick="UIService.handleCadastrarAluno()" class="btn btn-success w-100">Matricular Aluno</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-primary text-white fw-bold">Lançamento de Chamada</div>
+          <div class="card-body">
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="selectSalaChamada" class="form-label">Filtrar Sala</label>
+                <select id="selectSalaChamada" class="form-select" onchange="UIService.renderizarListaChamada()"></select>
+              </div>
+              <div class="col-md-6">
+                <label for="inputDataChamada" class="form-label">Data da Chamada</label>
+                <input type="date" id="inputDataChamada" class="form-control" onchange="UIService.renderizarListaChamada()">
+              </div>
+            </div>
+            
+            <div id="containerJustificativa" class="alert alert-warning d-none">
+              <label for="inputJustificativa" class="form-label fw-bold">⚠️ Alteração Retroativa Detectada. Insira a Justificativa:</label>
+              <input type="text" id="inputJustificativa" class="form-control" placeholder="Motivo da alteração...">
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-striped align-middle">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Aluno</th>
+                    <th>Status Atual</th>
+                    <th>Ações (Marcar Novo)</th>
+                    <th>Histórico / Métricas</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaChamada">
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

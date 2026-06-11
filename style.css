@@ -1,0 +1,28 @@
+/* Customizações finas para o Diário de Classe */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+}
+
+/* Garante que textos longos de métricas não quebrem o layout */
+.text-muted {
+  word-break: break-word;
+}
+
+/* Suaviza a transição de cores dos alertas */
+.alert {
+  transition: all 0.3s ease-in-out;
+}
